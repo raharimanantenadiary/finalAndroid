@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Thème sans barre d'action -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Autres attributs de style -->
+    </style>
+
+    <style name="SplashScreen" parent="Theme.AppCompat.Light.NoActionBar" >
+        <item  name="android:windowBackground" > @drawable/background_splash_screen </item>
+    </style>
+
+</resources>
