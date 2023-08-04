@@ -7,11 +7,20 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.example.myapplication.Interface.Api;
 import com.example.myapplication.model.Categorie;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+import android.widget.Toast;
 
 public class fragment2 extends Fragment implements MyAdapter.OnItemClickListener {
 
@@ -25,14 +34,36 @@ public class fragment2 extends Fragment implements MyAdapter.OnItemClickListener
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_fragment2, container, false);
         recyclerView = view.findViewById(R.id.rcview2);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(new MyAdapter(initData(), this)); // Passer "this" en tant que référence de l'interface
+
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(Api.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        Api api = retrofit.create(Api.class);
+        Call<List<Categorie>> call = api.getAllcategorie();
+        call.enqueue(new Callback<List<Categorie>>() {
+            @Override
+            public void onResponse(Call<List<Categorie>> call, Response<List<Categorie>> response) {
+                if (!response.isSuccessful()) {
+                    Toast.makeText(getContext(), "Error: " + response.code(), Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                List<Categorie> cat_list = response.body();
+                MyAdapter myAdapter = new MyAdapter(getContext(), cat_list);
+                recyclerView.setAdapter(myAdapter);
+            }
+
+            @Override
+            public void onFailure(Call<List<Categorie>> call, Throwable t) {
+                Toast.makeText(getContext(), "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
         return view;
     }
 

@@ -21,12 +21,12 @@
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:id="@+id/itemImg"
+                android:id="@+id/image_categorie"
                 android:src="@drawable/logo2"
                 android:scaleType="centerCrop" />
 
             <EditText
-                android:id="@+id/idModel"
+                android:id="@+id/idCategorie"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:textColor="@android:color/transparent"
@@ -43,7 +43,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/itemName"
+                    android:id="@+id/intitule_categorie"
                     android:text="Diary"
                     android:textSize="20sp"
                     android:textColor="@android:color/black"

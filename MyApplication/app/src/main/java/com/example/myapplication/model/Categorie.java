@@ -1,16 +1,11 @@
 package com.example.myapplication.model;
 
-import com.google.gson.annotations.SerializedName;
-
 public class Categorie {
 
-    @SerializedName("idCategorie")
     private String idCategorie;
 
-    @SerializedName("intitule")
     private String intitule;
 
-    @SerializedName("icone")
     private String icone;
 
     public Categorie(String idCategorie, String intitule, String icone) {
