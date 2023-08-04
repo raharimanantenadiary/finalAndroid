@@ -6,10 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 public class Login extends Fragment {
 
-    Button btn_redirection_visiter, btn_redirection_connecter, btn_redirection_inscription;
+    Button btn_redirection_visiter, btn_login, btn_redirection_inscription;
 
     public Login() {
         // Required empty public constructor
@@ -23,8 +25,26 @@ public class Login extends Fragment {
 
         // Récupérer les boutons depuis le layout fragment_login.xml
         btn_redirection_visiter = rootView.findViewById(R.id.btnRedirectionVisiter);
-        btn_redirection_connecter = rootView.findViewById(R.id.btnConnecter);
+        btn_login = rootView.findViewById(R.id.btnConnecter);
         btn_redirection_inscription = rootView.findViewById(R.id.btnRedirectionInscription);
+
+        // Ajouter un listener au bouton btnRedirectionInscription
+        btn_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Remplacer le fragment par le fragment Inscription
+                //replaceFragment(new Inscription());
+                EditText login = rootView.findViewById(R.id.login_utilisateur);
+                EditText mdp = rootView.findViewById(R.id.mdp_utilisateur);
+
+                String loginText = login.getText().toString();
+                String mdpText = mdp.getText().toString();
+
+                String message = "Login: " + loginText + "\nMDP: " + mdpText;
+                Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
         // Ajouter un listener au bouton btnRedirectionInscription
         btn_redirection_inscription.setOnClickListener(new View.OnClickListener() {

@@ -29,7 +29,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <EditText
-            android:id="@+id/etLogin"
+            android:id="@+id/login_utilisateur"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Login" />
@@ -46,7 +46,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <EditText
-            android:id="@+id/etPassword"
+            android:id="@+id/mdp_utilisateur"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Mot de passe"

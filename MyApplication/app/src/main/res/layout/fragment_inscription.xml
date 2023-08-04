@@ -31,7 +31,7 @@
         app:layout_constraintVertical_bias="0.2" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutLogin"
+        android:id="@+id/inscription_login"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/textView"
@@ -41,7 +41,7 @@
         android:hint="Login">
 
         <EditText
-            android:id="@+id/login"
+            android:id="@+id/login_ins"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -50,7 +50,7 @@
         android:id="@+id/testmail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/textInputLayoutLogin"
+        app:layout_constraintTop_toBottomOf="@id/inscription_login"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp"
@@ -64,7 +64,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutPassword"
+        android:id="@+id/inscription_mdp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/testmail"
@@ -74,7 +74,7 @@
         android:hint="Mot de passe">
 
         <EditText
-            android:id="@+id/mdp"
+            android:id="@+id/mdp_ins"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword" />
@@ -89,7 +89,7 @@
         android:text="S'inscrire"
         android:textColor="@android:color/white"
         android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/textInputLayoutPassword"
+        app:layout_constraintTop_toBottomOf="@id/inscription_mdp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
