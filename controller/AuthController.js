@@ -48,7 +48,6 @@ const signin = (req, res) => {
                 req.body.mdp,
                 user.mdp
             );
-            console.log(passwordIsValid);
             if (!passwordIsValid) {
                 return res.send({
                     accessToken: null,
@@ -78,11 +77,6 @@ const signin = (req, res) => {
 const envoyecode = (req, res) => {
     var email=process.env.EMAIL;
     var mdp=process.env.MDP;
-    console.log(email);
-    console.log(mdp);
-
-    console.log(req.body.mail);
-    console.log(email);
     var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: { user:email , pass:mdp }
@@ -132,7 +126,7 @@ const envoyecode = (req, res) => {
     };
 
     transporter.sendMail(mailOptions)
-    .then(info => {validation
+    .then(info => {
         User.updateOne({ mail: req.body.mail },{$set:{validation:code}})
             .then(rep => {
                 console.log('success send mail:' + info);
