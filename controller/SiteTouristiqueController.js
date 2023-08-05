@@ -6,7 +6,7 @@ const mongoose=require("mongoose");
 
 
 const findSiteByCategorie = async (req, res) => {
-    await site.findOne({idCategorie: req.params.idCategorie})
+    await site.find({idCategorie: req.params.idCategorie})
     .exec(function (err, site) {
         if (err) {
             sendResult(res, err);
@@ -69,7 +69,7 @@ const findAllNotification = async (req, res) => {
 
 const ajoutCommentaire = async (req, res) => { 
     site.findOneAndUpdate(
-        { _id: req.body.id}, 
+        { idSite: req.body.id}, 
         { $push: { commentaire: {
             idUser:req.body.idUser,
             contenu:req.body.contenu,
