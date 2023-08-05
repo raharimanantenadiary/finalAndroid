@@ -8,7 +8,7 @@ const {findSiteByCategorie,findAllCategorie,ajoutCommentaire,findAllNotification
 // /* GET users listing. */
 
 // router.post('/save',save); //ajout reparation
-router.get('/siteByCategorie',findSiteByCategorie);
+router.get('/siteByCategorie/:idCategorie',findSiteByCategorie);
 router.post('/saveComs',ajoutCommentaire);
 router.get('/categorie',findAllCategorie);
 router.get('/notification',findAllNotification);
