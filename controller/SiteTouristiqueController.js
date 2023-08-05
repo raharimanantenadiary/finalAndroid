@@ -16,6 +16,18 @@ const findSiteByCategorie = async (req, res) => {
 });
 }
 
+const findSiteById = async (req, res) => {
+    await site.findOne({_id: req.params.idSite})
+    .exec(function (err, site) {
+        if (err) {
+            sendResult(res, err);
+        } else {
+        sendResult(res, site);
+    }
+});
+}
+
+
 
 
 const findAllCategorie = async (req, res) => {
@@ -781,6 +793,7 @@ module.exports = {
     findSiteByCategorie,
     findAllCategorie,
     findAllNotification,
-    ajoutCommentaire
+    ajoutCommentaire,
+    findSiteById 
 
 }

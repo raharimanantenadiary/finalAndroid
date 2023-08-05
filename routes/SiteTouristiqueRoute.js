@@ -3,12 +3,13 @@ var router = express.Router();
 
 
 
-const {findSiteByCategorie,findAllCategorie,ajoutCommentaire,findAllNotification} = require('../controller/SiteTouristiqueController') ;
+const {findSiteByCategorie,findAllCategorie,ajoutCommentaire,findAllNotification,findSiteById} = require('../controller/SiteTouristiqueController') ;
 
 // /* GET users listing. */
 
 // router.post('/save',save); //ajout reparation
 router.get('/siteByCategorie/:idCategorie',findSiteByCategorie);
+router.get('/siteById/:idSite',findSiteById);
 router.post('/saveComs',ajoutCommentaire);
 router.get('/categorie',findAllCategorie);
 router.get('/notification',findAllNotification);
