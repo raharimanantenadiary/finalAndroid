@@ -6,7 +6,6 @@ const mongoose=require("mongoose");
 
 
 const findSiteByCategorie = async (req, res) => {
-    console.log(req.params);
     await site.findOne({idCategorie: req.params.idCategorie})
     .exec(function (err, site) {
         if (err) {

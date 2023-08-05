@@ -39,6 +39,10 @@ const signin = (req, res) => {
             if (!user) {
                return res.send({message:"utilisateur introuvable"});
             }
+
+            if (!user.isactive) {
+                return res.send({message:"le compte n'est pas encore activé"});
+             }
          
             var passwordIsValid = bcrypt.compareSync(
                 req.body.mdp,
@@ -59,6 +63,7 @@ const signin = (req, res) => {
                 id: user.id,
                 username: user.username,
                 mail: user.mail,
+                profile:user.profile,
                 accessToken: token,
                 error:false
             });
@@ -127,7 +132,7 @@ const envoyecode = (req, res) => {
     };
 
     transporter.sendMail(mailOptions)
-    .then(info => {
+    .then(info => {validation
         User.updateOne({ mail: req.body.mail },{$set:{validation:code}})
             .then(rep => {
                 console.log('success send mail:' + info);
@@ -145,10 +150,9 @@ const envoyecode = (req, res) => {
 }
 
 const activation = (req, res) => {
-    // console.log(req.body);
         User.findOne({validation:req.body.code })
             .then(user => {
-                User.updateOne({ mail: user.mail }).then(resultat =>{
+                User.updateOne({ mail: user.mail },{$set:{isactive:true}}).then(resultat =>{
 
                     var token = jwt.sign({ id: user.id },'secret', {
                         expiresIn: 86400 // 24 hours
@@ -158,6 +162,7 @@ const activation = (req, res) => {
                         id: user.id,
                         username: user.username,
                         mail: user.mail,
+                        profile:user.profile,
                         accessToken: token,
                         error:false
                     });
@@ -171,6 +176,7 @@ const activation = (req, res) => {
             })
 
 }
+
 
 
 module.exports = {

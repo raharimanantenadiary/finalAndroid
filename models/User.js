@@ -21,6 +21,7 @@ const UserSchema = new Schema({
         message: props => 'cette adresse email est deja utilisé.'
       },
    } ,
+   isactive:{ type: Boolean},
     validation:{ type: String},
     mdp: { type: String, required: true } ,
     profile:{type:String}
