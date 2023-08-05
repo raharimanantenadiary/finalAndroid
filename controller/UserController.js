@@ -7,7 +7,7 @@ const findAll = async (req, res) => {
 
 
 const getUserInfo = async (req, res) => {
-    User.findOne({_id: req.body.iduser}).then((result) => sendResult(res, result)) ;
+    User.findOne({_id: req.params.iduser}).then((result) => sendResult(res, result)) ;
 } ;
 
 
