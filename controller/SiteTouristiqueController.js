@@ -41,6 +41,21 @@ const findAllCategorie = async (req, res) => {
 });
 }
 
+const findSiteByTitre = async (req, res) => {
+const searchTerm = req.params.titre;
+
+// Utilisation d'une expression régulière pour simuler LIKE%
+const searchTermRegex = new RegExp(`^${searchTerm}`, 'i');
+    await site.find({titre : searchTermRegex})
+    .exec(function (err, site) {
+        if (err) {
+            sendResult(res, err);
+        } else {
+        sendResult(res, site);
+    }
+});
+}
+
 const findAllNotification = async (req, res) => {
     await Notification.find({}).populate('idUser','username').populate('idSite','titre')
     .exec(function (err, notification) {
@@ -794,6 +809,7 @@ module.exports = {
     findAllCategorie,
     findAllNotification,
     ajoutCommentaire,
-    findSiteById 
+    findSiteById,
+    findSiteByTitre
 
 }
