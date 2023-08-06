@@ -31,7 +31,7 @@ const signup = (req, res) => {
 
 };
 
-const signin = (req, res) => {
+/**const signin = (req, res) => {
     console.log(req.body.mail,req.body.mdp);
     User.findOne({mail:req.body.mail})
         .then((user) => {
@@ -71,7 +71,52 @@ const signin = (req, res) => {
         .catch(err => {
             res.send({ message: err.message });
         });
+};**/
+
+const signin = (req, res) => {
+    console.log(req.body.mail, req.body.mdp);
+    User.findOne({ mail: req.body.mail })
+        .then((user) => {
+            console.log(user);
+            if (!user) {
+                return res.send({ message: "utilisateur introuvable", activation_compte: 2 });
+            }
+
+            if (!user.isactive) {
+                return res.send({ message: "le compte n'est pas encore activé", activation_compte: 1 });
+            }
+
+            var passwordIsValid = bcrypt.compareSync(
+                req.body.mdp,
+                user.mdp
+            );
+            if (!passwordIsValid) {
+                return res.send({
+                    accessToken: null,
+                    message: "Mot de passe erroné!",
+                    activation_compte: 0
+                });
+            }
+
+            token = generateAccessToken(user);
+            console.log(token);
+
+            res.send({
+                id: user.id,
+                username: user.username,
+                mail: user.mail,
+                profile: user.profile,
+                accessToken: token,
+                error: false,
+                activation_compte: 0
+            });
+
+        })
+        .catch(err => {
+            res.send({ message: err.message, activation_compte: -1 });
+        });
 };
+
 
 
 const envoyecode = (req, res) => {
