@@ -75,21 +75,19 @@ const signup = (req, res) => {
 
 const signin = (req, res) => {
     console.log(req.body.mail, req.body.mdp);
-    User.findOne({
-        $and: [
-            { mail: req.body.mail },
-            { mdp: req.body.mdp }
-        ]
-    })
+    User.findOne({ mail: req.body.mail })
         .then((user) => {
             console.log(user);
+            let activation_compte = 0; // Par défaut, on suppose que le compte est activé
+
             if (!user) {
-                // Si l'utilisateur n'est pas trouvé, on change l'activation du compte en 2
-                return res.send({ message: "utilisateur introuvable", activation_compte: 2 });
+                activation_compte = 2;
+                return res.send({ message: "utilisateur introuvable", activation_compte: activation_compte });
             }
 
             if (!user.isactive) {
-                return res.send({ message: "le compte n'est pas encore activé", activation_compte: 1 });
+                activation_compte = 1; // Si le compte n'est pas actif, on le définit à 1
+                return res.send({ message: "le compte n'est pas encore activé", activation_compte: activation_compte });
             }
 
             var passwordIsValid = bcrypt.compareSync(
@@ -97,16 +95,19 @@ const signin = (req, res) => {
                 user.mdp
             );
             if (!passwordIsValid) {
+                activation_compte = 2; // Le mot de passe est incorrect, on définit activation_compte à 2
                 return res.send({
                     accessToken: null,
                     message: "Mot de passe erroné!",
-                    activation_compte: 2
+                    activation_compte: activation_compte // On ajoute l'attribut activation_compte à la réponse
                 });
             }
 
             token = generateAccessToken(user);
             console.log(token);
 
+            // Le mot de passe est correct, on renvoie activation_compte à 0 car le compte est activé
+            activation_compte = 0;
             res.send({
                 id: user.id,
                 username: user.username,
@@ -114,7 +115,7 @@ const signin = (req, res) => {
                 profile: user.profile,
                 accessToken: token,
                 error: false,
-                activation_compte: 0
+                activation_compte: activation_compte // On ajoute l'attribut activation_compte à la réponse
             });
 
         })
