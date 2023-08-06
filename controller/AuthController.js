@@ -106,8 +106,7 @@ const signin = (req, res) => {
             token = generateAccessToken(user);
             console.log(token);
 
-            // Le mot de passe est correct, on renvoie activation_compte à 0 car le compte est activé
-            activation_compte = 0;
+            // On ne définit pas activation_compte ici car il est déjà à 0 par défaut pour un compte activé
             res.send({
                 id: user.id,
                 username: user.username,
@@ -123,7 +122,6 @@ const signin = (req, res) => {
             res.send({ message: err.message, activation_compte: -1 });
         });
 };
-
 
 
 
