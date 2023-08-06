@@ -75,7 +75,12 @@ const signup = (req, res) => {
 
 const signin = (req, res) => {
     console.log(req.body.mail, req.body.mdp);
-    User.findOne({ mail: req.body.mail })
+    User.findOne({
+        $and: [
+            { mail: req.body.mail },
+            { mdp: req.body.mdp }
+        ]
+    })
         .then((user) => {
             console.log(user);
             if (!user) {
