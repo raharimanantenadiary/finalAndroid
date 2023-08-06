@@ -73,7 +73,7 @@ const signup = (req, res) => {
         });
 };**/
 
-cconst signin = (req, res) => {
+const signin = (req, res) => {
     console.log(req.body.mail, req.body.mdp);
     User.findOne({ mail: req.body.mail })
         .then((user) => {
