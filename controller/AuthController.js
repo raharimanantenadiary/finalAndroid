@@ -73,12 +73,13 @@ const signup = (req, res) => {
         });
 };**/
 
-const signin = (req, res) => {
+cconst signin = (req, res) => {
     console.log(req.body.mail, req.body.mdp);
     User.findOne({ mail: req.body.mail })
         .then((user) => {
             console.log(user);
             if (!user) {
+                // Si l'utilisateur n'est pas trouvé, on change l'activation du compte en 2
                 return res.send({ message: "utilisateur introuvable", activation_compte: 2 });
             }
 
@@ -116,6 +117,7 @@ const signin = (req, res) => {
             res.send({ message: err.message, activation_compte: -1 });
         });
 };
+
 
 
 
