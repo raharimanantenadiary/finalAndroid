@@ -94,7 +94,7 @@ const signin = (req, res) => {
                 return res.send({
                     accessToken: null,
                     message: "Mot de passe erroné!",
-                    activation_compte: 0
+                    activation_compte: 2
                 });
             }
 
