@@ -13,7 +13,7 @@ router.get('/siteById/:idSite',findSiteById);
 router.get('/siteByTitre/:titre',findSiteByTitre)
 router.post('/saveComs',ajoutCommentaire);
 router.get('/categorie',findAllCategorie);
-router.get('/notification',findAllNotification);
+router.get('/notification/:idUser',findAllNotification);
 router.post('/saveGalerie',ajoutGallerie);
               
             

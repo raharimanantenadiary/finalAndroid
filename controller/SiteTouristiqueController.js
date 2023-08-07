@@ -57,7 +57,8 @@ const searchTermRegex = new RegExp(`^${searchTerm}`, 'i');
 }
 
 const findAllNotification = async (req, res) => {
-    await Notification.find({}).populate('idUser','username').populate('idSite','titre')
+    console.log(req.params.idUser);
+    await Notification.find({ idUser: { $ne: req.params.idUser } }).populate('idUser','username').populate('idSite','titre')
     .exec(function (err, notification) {
     if (err) {
         sendResult(res, err);
