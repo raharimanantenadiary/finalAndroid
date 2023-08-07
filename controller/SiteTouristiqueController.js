@@ -44,7 +44,7 @@ const findAllCategorie = async (req, res) => {
 const findSiteByTitre = async (req, res) => {
 const searchTerm = req.params.titre;
 
-// Utilisation d'une expression régulière pour simuler LIKE%
+
 const searchTermRegex = new RegExp(`^${searchTerm}`, 'i');
     await site.find({titre : searchTermRegex})
     .exec(function (err, site) {
@@ -76,16 +76,21 @@ const ajoutCommentaire = async (req, res) => {
             contenu:req.body.contenu,
             date:req.body.date,
         } }},
-        { new: true }, 
-        async (err, site) => {
-            console.log(site);
-            if (err) return sendResult(res,err);
-            await new Notification({idUser:req.body.idUser,idSite:site._id}).save(
-            function(error, notification) {
-            if (error)  sendResult(res, error);
-            sendResult(res,notification);
-        }); 
-    });
+        { new: true }).exec(function (err,site) {
+            if (err) {
+                sendResult(res, err);
+            } else {
+                async (err, site) => {
+                    if (err) return sendResult(res,err);
+                        await new Notification({idUser:req.body.idUser,idSite:site._id}).save(
+                        function(error, notification) {
+                        if (error)  sendResult(res, error);
+                        sendResult(res,notification);
+                    }); 
+                };
+            }
+        });
+     
 };
 
 const ajoutGallerie = async (req, res) => { 
