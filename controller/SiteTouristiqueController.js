@@ -70,7 +70,7 @@ const findAllNotification = async (req, res) => {
 
 const ajoutCommentaire = async (req, res) => { 
     site.findOneAndUpdate(
-        { _id: req.body.idSite}, 
+        { _id: req.body.id}, 
         { $push: { commentaire: {
             idUser:req.body.idUser,
             contenu:req.body.contenu,
