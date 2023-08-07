@@ -3,7 +3,7 @@ var router = express.Router();
 
 
 
-const {findSiteByCategorie,findAllCategorie,ajoutCommentaire,findAllNotification,findSiteById,findSiteByTitre} = require('../controller/SiteTouristiqueController') ;
+const {findSiteByCategorie,findAllCategorie,ajoutCommentaire,findAllNotification,findSiteById,findSiteByTitre,ajoutGallerie} = require('../controller/SiteTouristiqueController') ;
 
 // /* GET users listing. */
 
@@ -14,7 +14,7 @@ router.get('/siteByTitre/:titre',findSiteByTitre)
 router.post('/saveComs',ajoutCommentaire);
 router.get('/categorie',findAllCategorie);
 router.get('/notification',findAllNotification);
-
+router.post('/saveGalerie',ajoutGallerie);
               
             
 

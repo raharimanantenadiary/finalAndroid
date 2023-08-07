@@ -12,9 +12,7 @@ const SitetouristiqueSchema = new Schema({
     video:{ type: String } ,
 
     galerie:[{
-        titre:{ type: String } ,
-        details:{ type: String} ,
-        image:{ type: String },
+        media:{type:String,required: true }
     }],
     commentaire:[{
         idUser:{ type: ObjectId, ref: "User", required: true } ,
