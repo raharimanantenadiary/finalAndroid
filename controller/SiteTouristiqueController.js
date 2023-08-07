@@ -87,6 +87,24 @@ const ajoutCommentaire = async (req, res) => {
     });
 };
 
+const ajoutGallerie = async (req, res) => { 
+    site.findOneAndUpdate(
+        { idSite: req.body.id}, 
+        { $push: { galerie: {
+            media:req.body.media,
+        } }},
+        { new: true }, 
+        async (err, site) => {
+            console.log(site);
+            if (err) return sendResult(res,err);
+            await new Notification({idUser:req.body.idUser,idSite:site._id}).save(
+            function(error, notification) {
+            if (error)  sendResult(res, error);
+            sendResult(res,notification);
+        }); 
+    });
+};
+
 // const findByClient = async (req, res) => {
 //     await Reparation.find({})
 //     .populate({path:'iddepot',match:{idclient:req.params.idclient,etat:1 }})
