@@ -31,7 +31,7 @@ const signup = (req, res) => {
 
 };
 
-const signin = (req, res) => {
+/**const signin = (req, res) => {
     console.log(req.body.mail,req.body.mdp);
     User.findOne({mail:req.body.mail})
         .then((user) => {
@@ -71,7 +71,58 @@ const signin = (req, res) => {
         .catch(err => {
             res.send({ message: err.message });
         });
+};**/
+
+const signin = (req, res) => {
+    console.log(req.body.mail, req.body.mdp);
+    User.findOne({ mail: req.body.mail })
+        .then((user) => {
+            console.log(user);
+            let activation_compte = 0; // Par défaut, on suppose que le compte est activé
+
+            if (!user) {
+                activation_compte = 2;
+                return res.send({ message: "utilisateur introuvable", activation_compte: activation_compte });
+            }
+
+            if (!user.isactive) {
+                activation_compte = 1; // Si le compte n'est pas actif, on le définit à 1
+                return res.send({ message: "le compte n'est pas encore activé", activation_compte: activation_compte });
+            }
+
+            var passwordIsValid = bcrypt.compareSync(
+                req.body.mdp,
+                user.mdp
+            );
+            if (!passwordIsValid) {
+                activation_compte = 2; // Le mot de passe est incorrect, on définit activation_compte à 2
+                return res.send({
+                    accessToken: null,
+                    message: "Mot de passe erroné!",
+                    activation_compte: activation_compte // On ajoute l'attribut activation_compte à la réponse
+                });
+            }
+
+            token = generateAccessToken(user);
+            console.log(token);
+
+            // On ne définit pas activation_compte ici car il est déjà à 0 par défaut pour un compte activé
+            res.send({
+                id: user.id,
+                username: user.username,
+                mail: user.mail,
+                profile: user.profile,
+                accessToken: token,
+                error: false,
+                activation_compte: activation_compte // On ajoute l'attribut activation_compte à la réponse
+            });
+
+        })
+        .catch(err => {
+            res.send({ message: err.message, activation_compte: -1 });
+        });
 };
+
 
 
 const envoyecode = (req, res) => {
