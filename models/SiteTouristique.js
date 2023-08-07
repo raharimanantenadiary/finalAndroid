@@ -13,8 +13,8 @@ const SitetouristiqueSchema = new Schema({
 
     galerie:[{
         titre:{ type: String } ,
-        details:{ type: Number} ,
-        image:{ type: Number },
+        details:{ type: String} ,
+        image:{ type: String },
     }],
     commentaire:[{
         idUser:{ type: ObjectId, ref: "User", required: true } ,
