@@ -13,7 +13,6 @@ public class SplashScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-
         // Délai de 5 secondes avant de démarrer l'activité MainActivity
         new Handler().postDelayed(new Runnable() {
             @Override

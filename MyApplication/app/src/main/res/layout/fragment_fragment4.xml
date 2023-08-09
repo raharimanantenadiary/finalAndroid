@@ -1,35 +1,185 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/rouge_sang"
+    android:theme="@style/Theme.MyApplication"
     xmlns:android="http://schemas.android.com/apk/res/android"
+
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="16dp">
+    android:layout_height="match_parent">
 
-    <!-- ImageView -->
-    <ImageView
-        android:id="@+id/imageenfantmodel"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:src="@drawable/test"
-        android:contentDescription="Logo"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="50dp"
-        />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        tools:layout_editor_absoluteX="129dp"
+        tools:layout_editor_absoluteY="85dp">
 
-    <!-- TextView -->
-    <TextView
-        android:id="@+id/enfantModel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:layout_marginTop="16dp"
-        android:text="@string/hello_blank_fragment"
-        app:layout_constraintTop_toBottomOf="@id/imageenfantmodel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/liste_gallerie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:padding="8dp"
+                android:text="Gallerie"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cardViewCommentaire" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardViewGallerie"
+                        android:layout_width="400dp"
+                        android:layout_height="wrap_content"
+                        app:cardCornerRadius="8dp">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerview_galerie"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="8dp" />
+                    </androidx.cardview.widget.CardView>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            <TextView
+                android:id="@+id/detail_titre_site_touristique"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="12dp"
+                android:text="Titre site"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/image_site_touristique" />
+
+            <TextView
+                android:id="@+id/detail_historique_site_touristique"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Historique"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/detail_titre_site_touristique" />
+
+            <TextView
+                android:id="@+id/detail_contact_site_touristique"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Contact"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/detail_titre_site_touristique" />
+
+
+
+            <TextView
+                android:id="@+id/detail_email_site_touristique"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.016"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/detail_historique_site_touristique" />
+
+            <!-- TextView pour l'email du site touristique -->
+
+
+
+            <EditText
+                android:id="@+id/commentaire_utilisateur"
+                android:layout_width="390dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:padding="10dp"
+                android:hint="Donnez votre avis..."
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:background="@drawable/edittext_background"
+                app:layout_constraintTop_toBottomOf="@id/detail_historique_site_touristique"/>
+
+            /
+
+            <!-- Ajoutez d'autres vues ici si nécessaire -->
+            <Button
+                android:id="@+id/btn_ajout_commentaire"
+                android:layout_width="210dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="100dp"
+                android:text="Ajouter le commentaire"
+                android:textColor="@android:color/white"
+                android:background="@drawable/button_background"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/commentaire_utilisateur" />
+
+
+            <TextView
+                android:id="@+id/liste_commentaire"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="Voir les commentaires"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btn_ajout_commentaire" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewCommentaire"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/liste_commentaire">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerview_commentaire"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:padding="8dp" />
+
+            </androidx.cardview.widget.CardView>
+
+
+            <EditText
+                android:id="@+id/detail_id_site_touristique"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:inputType="none"
+                android:textColor="@android:color/transparent" />
+        </LinearLayout>
+    </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

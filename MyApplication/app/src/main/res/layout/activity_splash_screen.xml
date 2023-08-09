@@ -11,10 +11,10 @@
     <!-- Logo/Image -->
     <ImageView
         android:id="@+id/imageViewLogo"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
         android:background="@drawable/rounded_image"
-    android:src="@drawable/test"
+    android:src="@drawable/logo"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintBottom_toTopOf="@+id/appName"
     app:layout_constraintStart_toStartOf="parent"

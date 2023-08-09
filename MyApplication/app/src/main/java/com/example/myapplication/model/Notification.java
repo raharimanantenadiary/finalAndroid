@@ -2,35 +2,34 @@ package com.example.myapplication.model;
 
 
 public class Notification {
-    private String idUser;
-    private String idSite;
+    private String username;
+    private String titre;
     private String idNotification;
 
     public Notification() {
     }
 
-    public Notification(String idUser, String idSite, String idNotification) {
-        this.idUser = idUser;
-        this.idSite = idSite;
+
+    public Notification(String username, String titre, String idNotification) {
+        this.username = username;
+        this.titre = titre;
         this.idNotification = idNotification;
     }
 
-    // Getters and Setters for Notification fields
-
-    public String getIdUser() {
-        return idUser;
+    public String getUsername() {
+        return username;
     }
 
-    public void setIdUser(String idUser) {
-        this.idUser = idUser;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getIdSite() {
-        return idSite;
+    public String getTitre() {
+        return titre;
     }
 
-    public void setIdSite(String idSite) {
-        this.idSite = idSite;
+    public void setTitre(String titre) {
+        this.titre = titre;
     }
 
     public String getIdNotification() {
@@ -40,6 +39,4 @@ public class Notification {
     public void setIdNotification(String idNotification) {
         this.idNotification = idNotification;
     }
-
-
 }

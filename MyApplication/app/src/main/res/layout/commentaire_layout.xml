@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:padding="8dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:elevation="4dp"
+        android:foreground="?android:attr/selectableItemBackground">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/idCommentaire"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:textColor="@android:color/black"
+                android:inputType="textPassword" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical"
+                android:orientation="vertical"
+                android:layout_marginStart="8dp">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="30dp"
+                    app:cardElevation="4dp"
+                    android:layout_margin="8dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        android:layout_marginLeft="20dp"
+                        >
+
+
+                        <TextView
+                            android:id="@+id/commentaire_nom_utilisateur"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Utilisateur"
+                            android:textSize="15sp"
+                            android:textColor="@android:color/black"
+                            android:gravity="center_vertical" />
+
+                        <TextView
+                            android:id="@+id/commentaire_publication_utilisateur"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Commentaire"
+                            android:textSize="15sp"
+                            android:layout_marginLeft="20sp"
+                            android:textColor="@android:color/black"
+                            android:gravity="center_vertical" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+                <!-- Add any other views here if needed -->
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+
+</RelativeLayout>

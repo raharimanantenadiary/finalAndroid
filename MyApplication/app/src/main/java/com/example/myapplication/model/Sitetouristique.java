@@ -1,10 +1,15 @@
 package com.example.myapplication.model;
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 public class Sitetouristique {
 
+    @SerializedName("_id")
     private String idSitetouristique;
     private String idCategorie;
+    @SerializedName("titre")
     private String titre;
+    @SerializedName("localisation")
     private String localisation;
     private String historique;
     private String contact;

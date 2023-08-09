@@ -1,14 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <group android:checkableBehavior="single">
+<menu
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <group android:checkableBehavior="single"  >
         <item
-            android:id="@+id/nav_item1"
-            android:title="Item 1" />
+            android:id="@+id/home_menu"
+            android:icon="@drawable/home"
+            android:title="Accueil"></item>
+
         <item
-            android:id="@+id/nav_item2"
-            android:title="Item 2" />
+        android:id="@+id/ecran_preference_menu"
+        android:icon="@drawable/bascule"
+        android:title="Ecran préference">
+
+        </item>
+
         <item
-            android:id="@+id/nav_item3"
-            android:title="Item 3" />
+            android:id="@+id/inscription_menu"
+            android:icon="@drawable/inscription"
+            android:title="S'inscrire"></item>
+
+        <item
+            android:id="@+id/login_menu"
+            android:icon="@drawable/login"
+            android:title="Se connecter"></item>
+
+        <item
+            android:id="@+id/logout_menu"
+            android:icon="@drawable/logout"
+            android:title="Se déconnecter"></item>
+
     </group>
+
+
+
+
+
+
 </menu>

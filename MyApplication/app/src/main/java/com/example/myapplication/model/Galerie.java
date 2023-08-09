@@ -1,51 +1,36 @@
 package com.example.myapplication.model;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Galerie {
 
+    @SerializedName("_id")
     private String idGalerie;
-    private String titre;
-    private String details;
-    private String image;
+    @SerializedName("media")
+    private String media;
 
     public Galerie() {
+
     }
 
-    public Galerie(String idGalerie, String titre, String details, String image) {
+    public Galerie(String idGalerie, String media) {
         this.idGalerie = idGalerie;
-        this.titre = titre;
-        this.details = details;
-        this.image = image;
+        this.media = media;
     }
 
-    public String getId() {
+    public String getIdGalerie() {
         return idGalerie;
     }
 
-    public void setId(String id) {
-        this.idGalerie = id;
+    public void setIdGalerie(String idGalerie) {
+        this.idGalerie = idGalerie;
     }
 
-    public String getTitre() {
-        return titre;
+    public String getMedia() {
+        return media;
     }
 
-    public void setTitre(String titre) {
-        this.titre = titre;
-    }
-
-    public String getDetails() {
-        return details;
-    }
-
-    public void setDetails(String details) {
-        this.details = details;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
+    public void setMedia(String media) {
+        this.media = media;
     }
 }

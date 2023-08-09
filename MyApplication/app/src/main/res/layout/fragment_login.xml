@@ -5,13 +5,15 @@
     android:layout_height="match_parent"
     android:padding="16dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@android:color/white">
+    android:id="@+id/login_id_fragment"
+    android:background="@color/rouge_sang"
+    android:theme="@style/Theme.MyApplication">
 
     <ImageView
         android:id="@+id/imageViewLogo"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:src="@drawable/test"
+        android:src="@drawable/logo"
         android:layout_marginTop="50dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,7 +34,7 @@
             android:id="@+id/login_utilisateur"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Login" />
+            android:hint="Email" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -58,22 +60,22 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:background="@drawable/rounded_button"
-        android:text="Se connecter"
-        android:textColor="@android:color/white"
-        android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/textInputLayoutPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:background="@drawable/button_background"
+    android:text="Se connecter"
+    android:textColor="@android:color/white"
+    android:textSize="16sp"
+    app:layout_constraintTop_toBottomOf="@id/textInputLayoutPassword"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnRedirectionInscription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:background="@drawable/rounded_button"
+        android:background="@drawable/button_background"
         android:text="S'inscrire"
-        android:textColor="@android:color/white"
+        android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintTop_toBottomOf="@id/btnConnecter"
         app:layout_constraintEnd_toEndOf="parent"
@@ -84,12 +86,25 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:background="@drawable/rounded_button"
+        android:background="@drawable/button_background"
         android:text="Visiter"
         android:textColor="@android:color/white"
         android:textSize="16sp"
         app:layout_constraintTop_toBottomOf="@id/btnRedirectionInscription"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintTop_toBottomOf="@id/btnConnecter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="-45dp"
+        android:layout_marginLeft="200dp"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

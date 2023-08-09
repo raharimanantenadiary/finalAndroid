@@ -1,13 +1,22 @@
 package com.example.myapplication.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Date;
 
 public class Commentaire {
 
+    @SerializedName("_id")
     private String idCommentaire;
+    @SerializedName("idUser")
     private String idUser;
+    @SerializedName("contenu")
     private String contenu;
+    @SerializedName("date")
     private String date;
+
+    @SerializedName("idSite")
+    private String idSite_touristique;
 
     public Commentaire() {
     }
@@ -17,6 +26,14 @@ public class Commentaire {
         this.idUser = idUser;
         this.contenu = contenu;
         this.date = date;
+
+    }
+
+    public Commentaire(String idSite_touristique,String idUser, String contenu, String date,String a) {
+        this.idUser = idUser;
+        this.contenu = contenu;
+        this.date = date;
+        this.idSite_touristique = idSite_touristique;
     }
 
     public String getId() {

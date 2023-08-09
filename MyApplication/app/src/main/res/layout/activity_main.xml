@@ -1,11 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/drawerLayout"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_view"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".MainActivity"
+    tools:openDrawer="start">
 
+   <!-- Main Content -->
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:orientation="vertical">
 
+      <!-- Toolbar -->
+      <androidx.appcompat.widget.Toolbar
+          android:id="@+id/toolbar"
+          android:layout_width="match_parent"
+          android:layout_height="?attr/actionBarSize"
+          android:background="#66E795"
+          android:elevation="50dp"
+          android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+          app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+          app:title="Site Touristique" />
 
+      <!-- Fragment Container -->
+
+      <FrameLayout
+          android:id="@+id/fragment_container"
+          android:layout_width="match_parent"
+          android:layout_height="598dp"
+          android:layout_weight="1" >
+
+      </FrameLayout>
+
+      <!-- Add other views or fragments below if needed -->
+   </LinearLayout>
+
+   <!-- Navigation Drawer -->
+   <com.google.android.material.navigation.NavigationView
+       android:layout_width="wrap_content"
+       android:layout_height="match_parent"
+       android:id="@+id/navigation_view"
+       app:headerLayout="@layout/nav_header"
+       app:menu="@menu/drawer_menu"
+       android:layout_gravity="start">
+
+      <!-- Switch for Night Mode -->
+   </com.google.android.material.navigation.NavigationView>
 
 </androidx.drawerlayout.widget.DrawerLayout>
